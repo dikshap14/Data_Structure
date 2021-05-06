@@ -52,6 +52,24 @@ public class SinglyLinkedList {
 	   last.nxt=newNode;
 	   return;
    }
+   public void deleteNode(int key) {
+	   Node temp=head;
+	   Node prev = null;
+	   //if head node holdes the key to be deleted
+	   if(temp!=null && temp.d==key) {
+		   head=temp.nxt;
+		   return;
+	   }
+	   if(temp!=null && temp.d!=key) {
+		   prev=temp;
+		   temp.nxt=temp.nxt.nxt;
+	   }
+	   if(temp==null) {
+		   return;
+	   }
+	   
+	   prev.nxt=temp.nxt;
+   }
    //add nodes in Linked List	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -64,8 +82,9 @@ public class SinglyLinkedList {
 		l1.addNodeAfter(l1.head.nxt.nxt, 21);
 		l1.addNodeInStart(23);
 		l1.addNodeEnd(11);
+
+		l1.deleteNode(23);
 		l1.getLinkedList();
-		
 	}
 
 }
